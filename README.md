@@ -197,4 +197,3 @@
 |     * update Stats          |
 +-----------------------------+
 
-I can generate it fully formatted in Markdown for your GitHub repo.
