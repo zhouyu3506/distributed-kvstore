@@ -27,16 +27,7 @@
 +-------------------+                                    +------------------+
 ```
 
-**Request flow:**
 
-1. `client-bench` sends PUT/GET/DELETE → `compute-gateway`
-2. `compute-gateway`
-
-   * fetches shard/node info from metadata-service (cached locally)
-   * forwards the request to the correct storage-node
-3. `storage-node` registers itself to metadata-service at startup
-
----
 
 # 🔷 2. Metadata-Service Architecture
 
