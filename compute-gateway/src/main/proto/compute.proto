@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package compute;
+
+service Compute {
+  rpc Put(ClientPutRequest) returns (ClientPutResponse);
+
+  rpc Get(ClientGetRequest) returns (ClientGetResponse);
+
+  rpc Delete(ClientDeleteRequest) returns (ClientDeleteResponse);
+}
+  message ClientPutRequest {
+    string key = 1;
+    bytes value = 2;
+      }
+
+  message ClientPutResponse {
+  string status = 1;
+}
+
+  message ClientGetRequest {
+  string key = 1;
+  }
+
+  message ClientGetResponse {
+  string status = 1;
+  bytes value = 2;
+  }
+
+  message ClientDeleteRequest {
+  string key = 1;
+  }
+
+  message ClientDeleteResponse {
+  string status = 1;
+  }

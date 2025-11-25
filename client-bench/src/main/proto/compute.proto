@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package compute;
+
+
+//对外暴露给 client-bench 的服务接口，真正实现由compute-gateway 完成
+service Compute {
+  rpc Put (ClientPutRequest) returns (ClientPutResponse);
+  rpc Get (ClientGetRequest) returns (ClientGetResponse);
+  rpc Delete (ClientDeleteRequest) returns (ClientDeleteResponse);
+}
+
+//请求&响应消息
+
+// put: 写入/覆盖一个key
+message ClientPutRequest {
+  string key = 1;
+  bytes value = 2;
+}
+
+message ClientPutResponse {
+  string status = 1;
+}
+
+//GET: 读取一个key
+message ClientGetRequest {
+  string key = 1;
+}
+
+message ClientGetResponse {
+  string status = 1;
+  bytes value = 2;
+}
+
+//DELETE: 删除一个key
+message ClientDeleteRequest {
+  string key = 1;
+}
+
+message ClientDeleteResponse {
+  string status = 1;
+}

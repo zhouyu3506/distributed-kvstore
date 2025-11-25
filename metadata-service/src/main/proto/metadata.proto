@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package metadata;
+
+service Metadata {
+  // 注册 storage node
+  rpc RegisterNode (RegisterNodeRequest) returns (RegisterNodeResponse);
+
+  //获取全部 shard map
+  rpc GetShardMap(ShardMapRequest) returns (ShardMapResponse);
+
+  //查 key 对应的storage node
+  rpc LookupKey(LookupRequest) returns (LookupResponse);
+}
+
+message RegisterNodeRequest {
+  string node_id = 1;
+  string host = 2;
+  int32 port = 3;
+}
+
+message RegisterNodeResponse {
+  string status = 1;
+}
+
+message LookupRequest {
+  string key = 1;
+}
+
+message LookupResponse {
+  string node_id =1;
+  string host = 2;
+  int32 port = 3;
+  string status = 4;
+}
+
+message ShardMapRequest {}
+
+message ShardMapResponse {
+  repeated NodeInfo nodes = 1;
+}
+
+message NodeInfo {
+  string node_id = 1;
+  string host = 2;
+  int32 port = 3;
+}
